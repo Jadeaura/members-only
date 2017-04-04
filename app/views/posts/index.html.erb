@@ -1,0 +1,16 @@
+<h1>INDEX</h1>
+
+<div>
+	<% @posts.each do |p| %>
+		<% user = User.find_by(id: p.author) %>
+		<ul>
+			<li><%= p.title %></li>
+			<li><%= p.body %></li>
+			<% if logged_in? %>
+				<li>Author: <%= user.username %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
+
+<h2><%= link_to "Log out", logout_path, method: "delete" %></h2>
